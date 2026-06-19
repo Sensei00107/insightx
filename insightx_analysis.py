@@ -1,7 +1,3 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║              InsightX — E-Commerce Data Analytics Project                  ║
-# ║  Stack : NumPy · Pandas · Matplotlib · Seaborn                             ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
 
 import numpy as np
 import pandas as pd
@@ -26,9 +22,9 @@ def save(name):
     plt.close()
     print(f"  ✓ Saved {name}")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 1. LOAD & CLEAN
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("\n── 1. Loading & Cleaning ──")
 
 df = pd.read_csv(os.path.join(os.path.dirname(__file__), "data", "ecommerce_data.csv"),
@@ -62,9 +58,9 @@ print(f"  Date range    : {df['order_date'].min().date()} → {df['order_date'].
 print(f"  Total revenue : ₹{df_completed['revenue'].sum():,.0f}")
 print(f"  Unique customers: {df['customer_id'].nunique()}")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 2. SUMMARY STATISTICS
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("\n── 2. Summary Statistics ──")
 
 print("\n  Revenue by Category:")
@@ -76,9 +72,9 @@ print(cat_stats.to_string())
 print("\n  Order Status Distribution:")
 print(df["status"].value_counts(normalize=True).mul(100).round(1).to_string())
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 3. CHART 1 — Monthly Revenue Trend
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("\n── 3. Chart: Monthly Revenue Trend ──")
 
 monthly = (df_completed.groupby("month")["revenue"]
@@ -104,9 +100,9 @@ ax.spines[["top","right"]].set_visible(False)
 plt.tight_layout()
 save("01_monthly_revenue_trend.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 4. CHART 2 — Revenue by Category (horizontal bar)
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 4. Chart: Revenue by Category ──")
 
 cat_rev = (df_completed.groupby("category")["revenue"]
@@ -127,9 +123,9 @@ ax.tick_params(axis="y", length=0)
 plt.tight_layout()
 save("02_revenue_by_category.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 5. CHART 3 — Sales Channel Performance
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 5. Chart: Sales Channel Performance ──")
 
 channel = (df_completed.groupby("channel")
@@ -161,9 +157,9 @@ plt.suptitle("Sales Channel Performance", fontsize=14, fontweight="bold", y=1.01
 plt.tight_layout()
 save("03_channel_performance.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 6. CHART 4 — Customer Segments (Age × Gender heatmap)
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 6. Chart: Customer Segment Heatmap ──")
 
 seg = (df_completed.groupby(["age_group","gender"])["revenue"]
@@ -181,9 +177,9 @@ ax.set_ylabel("Age Group")
 plt.tight_layout()
 save("04_customer_segment_heatmap.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 7. CHART 5 — Top 10 Products by Revenue
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 7. Chart: Top 10 Products ──")
 
 top_products = (df_completed.groupby(["category","product"])["revenue"]
@@ -212,9 +208,9 @@ ax.legend(handles=legend_items, title="Category", fontsize=9, title_fontsize=9,
 plt.tight_layout()
 save("05_top10_products.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 8. CHART 6 — Order Status Donut
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 8. Chart: Order Status Donut ──")
 
 status_counts = df["status"].value_counts()
@@ -239,9 +235,9 @@ ax.set_title("Order Status Distribution", fontsize=13, fontweight="bold", pad=10
 plt.tight_layout()
 save("06_order_status_donut.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 9. CHART 7 — Revenue by Region × Quarter
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 9. Chart: Region × Quarter Revenue ──")
 
 rq = (df_completed.groupby(["region","quarter"])["revenue"]
@@ -261,9 +257,9 @@ ax.legend(title="Quarter", bbox_to_anchor=(1.01, 1), loc="upper left", fontsize=
 plt.tight_layout()
 save("07_region_quarter_revenue.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 10. CHART 8 — Price vs Revenue scatter (coloured by category)
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 10. Chart: Price vs Revenue Scatter ──")
 
 fig, ax = plt.subplots(figsize=(9, 5), facecolor=BG)
@@ -280,9 +276,9 @@ ax.spines[["top","right"]].set_visible(False)
 plt.tight_layout()
 save("08_price_vs_revenue_scatter.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 11. CHART 9 — Day-of-Week Order Volume
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 11. Chart: Day-of-Week Order Volume ──")
 
 dow_order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
@@ -303,9 +299,9 @@ ax.legend(handles=[Patch(color=PALETTE[0], label="Weekday"),
 plt.tight_layout()
 save("09_day_of_week_orders.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 12. CHART 10 — Discount Impact on Revenue
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("── 12. Chart: Discount Impact ──")
 
 disc = df_completed.copy()
@@ -338,9 +334,9 @@ ax2.spines[["top","left"]].set_visible(False)
 plt.tight_layout()
 save("10_discount_impact.png")
 
-# ═══════════════════════════════════════════════════════════════════════════════
+
 # 13. SUMMARY OUTPUT
-# ═══════════════════════════════════════════════════════════════════════════════
+
 print("\n" + "═"*60)
 print("  InsightX — Analysis Complete")
 print("═"*60)
