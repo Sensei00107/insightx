@@ -1,2 +1,1 @@
-# insightx
-End-to-end e-commerce data analytics project using Python (NumPy, Pandas, Matplotlib, Seaborn) — covers data cleaning, EDA, customer segmentation, trend analysis, and Power BI dashboards for visual storytelling.
+A complete data analytics pipeline on an e-commerce dataset. Includes data wrangling with Pandas & NumPy, exploratory data analysis, 10+ visualizations using Matplotlib & Seaborn, customer segmentation by age/gender/region, and an interactive Power BI dashboard. Built as a portfolio project.
