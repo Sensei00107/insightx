@@ -7,14 +7,14 @@ import os
 np.random.seed(42)
 random.seed(42)
 
-# ── CONFIG ────────────────────────────────────────────────────────────────────
+# ─ CONFIG 
 N_ORDERS      = 5000
 N_CUSTOMERS   = 1200
 START_DATE    = datetime(2023, 1, 1)
 END_DATE      = datetime(2023, 12, 31)
 OUTPUT_PATH   = os.path.join(os.path.dirname(__file__), "data", "ecommerce_data.csv")
 
-# ── REFERENCE DATA ────────────────────────────────────────────────────────────
+# ─ REFERENCE DATA
 CATEGORIES = {
     "Electronics":   {"products": ["Wireless Earbuds", "Smart Watch", "Bluetooth Speaker", "Phone Case", "USB Hub"],        "price_range": (15,  350)},
     "Clothing":      {"products": ["T-Shirt", "Jeans", "Hoodie", "Sneakers", "Jacket"],                                     "price_range": (12,  180)},
@@ -29,14 +29,13 @@ STATUSES    = ["Completed", "Completed", "Completed", "Returned", "Cancelled"]  
 GENDERS     = ["Male", "Female", "Other"]
 AGE_GROUPS  = ["18-24", "25-34", "35-44", "45-54", "55+"]
 
-# ── CUSTOMERS ─────────────────────────────────────────────────────────────────
+# ─ CUSTOMERS
 customer_ids   = [f"CUST{str(i).zfill(4)}" for i in range(1, N_CUSTOMERS + 1)]
 customer_region = {cid: random.choice(REGIONS)    for cid in customer_ids}
 customer_gender = {cid: random.choice(GENDERS)    for cid in customer_ids}
 customer_age    = {cid: random.choice(AGE_GROUPS) for cid in customer_ids}
 
-# ── ORDERS ────────────────────────────────────────────────────────────────────
-records = []
+# ─ ORDERS 
 date_range_days = (END_DATE - START_DATE).days
 
 for i in range(N_ORDERS):
